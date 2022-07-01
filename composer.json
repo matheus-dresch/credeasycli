@@ -1,0 +1,22 @@
+{
+    "name": "matheus/credeasycli",
+    "description": "O CredEasy mas apenas na CLI",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Matheus\\Credeasycli\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Matheus Dresch",
+            "email": "matheus_dresch@sicredi.com.br"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.6",
+        "symfony/cache": "^5.4",
+        "doctrine/annotations": "^1.13",
+        "doctrine/migrations": "^3.3"
+    }
+}
