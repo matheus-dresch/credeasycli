@@ -18,5 +18,8 @@
         "symfony/cache": "^5.4",
         "doctrine/annotations": "^1.13",
         "doctrine/migrations": "^3.3"
+    },
+    "require-dev": {
+        "pear/console_table": "^1.3"
     }
 }

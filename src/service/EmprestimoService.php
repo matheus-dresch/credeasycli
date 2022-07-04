@@ -84,10 +84,12 @@ class EmprestimoService
             throw new DomainException("O status do empréstimo não pode ser modificado");
         }
 
-        $emprestimo->setStatus($status);
+        if ($status === "APROVADO") {
+            $cpf = $emprestimo->getCliente()->getCpf();
+            $this->clienteDao->updateEmprestimoData($cpf, $emprestimo->getValor());
+        }
 
-        $cpf = $emprestimo->getCliente()->getCpf();
-        $this->clienteDao->updateEmprestimoData($cpf, $emprestimo->getValor());
+        $emprestimo->setStatus($status);
         $this->emprestimoDao->update($emprestimo);
     }
 }

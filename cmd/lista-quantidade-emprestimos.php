@@ -16,6 +16,6 @@ $clientes = $clienteService->getAllClientes();
 foreach ($clientes as $cliente) {
     echo "CPF: {$cliente->getCpf()}
     -> NOME: {$cliente->getNome()}
-    -> QTD: {$cliente->getEmprestimos()->count()}
+    -> QTD: {$cliente->getQtdEmprestimos()}
     -> VALOR: {$cliente->getTotalEmprestado()}\n" . PHP_EOL;;
 }

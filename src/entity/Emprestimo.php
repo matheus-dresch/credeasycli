@@ -5,6 +5,7 @@ namespace Matheus\Credeasycli\Entity;
 use DateTime;
 use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use DomainException;
 
@@ -163,7 +164,7 @@ class Emprestimo
 		return $this->cliente;
 	}
 
-	public function getParcelas(): mixed
+	public function getParcelas(): Collection
 	{
 		return $this->parcelas;
 	}

@@ -11,10 +11,29 @@ $emprestimoService = new EmprestimoService($dao);
 
 $emprestimoList = $emprestimoService->getAllEmprestimos();
 
-$mask = "|%3.3s | %-15.15s | %-15.15s |\n";
-printf($mask, 'Id', 'Valor', 'Status');
-printf($mask, '--', '---------------------', '---------------------');
+$consoleTable = new Console_Table();
+$consoleTable->setHeaders([
+    "ID",
+    "CPF",
+    "Valor",
+    "Status",
+    "Nº parcelas"
+]);
 
+/**
+ * @var Emprestimo[] $emprestimoList
+ */
 foreach ($emprestimoList as $emprestimo) {
-    printf($mask, $emprestimo->getId(), $emprestimo->getValor(), $emprestimo->getStatus());
+    $valor = $emprestimo->getValor();
+    $valorFormatado = "R$ " . number_format($valor, 2, ',', '.');
+
+    $consoleTable->addRow([
+        $emprestimo->getId(),
+        $emprestimo->getCliente()->getCpf(),
+        $valorFormatado,
+        $emprestimo->getStatus(),
+        $emprestimo->getParcelas()->count()
+    ]);
 }
+
+echo($consoleTable->getTable());
